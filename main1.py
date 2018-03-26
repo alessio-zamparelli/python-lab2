@@ -1,17 +1,29 @@
 tasks_list = list()
 
+def load_list(path):
+    with open(path) as f:
+        lines = f.readlines()
+        for line in lines:
+            tasks_list.append(line)
+
+
+def save_list(path):
+    f=open(path, 'w')
+    for item in tasks_list:
+        f.write("%s\n" % item)
+
 def todo_manager():
     while(1):
         try:
             print("cosa vuoi fare?\n1 inserisci\n2 remove\n3 show\n4 exit")
             ch=int(input())
-            if(ch==1):
+            if ch==1:
                 insert_task()
-            elif (ch==2):
+            elif ch==2:
                 remove_task()
-            elif (ch==3):
+            elif ch==3:
                 show_tasks()
-            elif (ch==4):
+            elif ch==4:
                 exit(0)
             else:
                 print("error in input command! retry again")
@@ -41,7 +53,10 @@ def show_tasks():
 
 
 def main():
+    pathToFile="/home/ale-dell/PycharmProjects/python-lab2/task_list.txt"
+    load_list(pathToFile)
     todo_manager()
+    save_list(pathToFile)
     return 0
 
 if __name__ == "__main__":
