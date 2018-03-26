@@ -4,7 +4,7 @@ def load_list(path):
     with open(path) as f:
         lines = f.readlines()
         for line in lines:
-            tasks_list.append(line)
+            tasks_list.append(line.strip())
 
 
 def save_list(path):
